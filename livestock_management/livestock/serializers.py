@@ -5,7 +5,8 @@ from .models import Animal, HealthRecord, ProductivityRecord
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name')
+        fields = ('id', 'username', 'password') # Explicitly include only username and password
+        write_only_fields = ('password',)
 
 class UserCreateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
