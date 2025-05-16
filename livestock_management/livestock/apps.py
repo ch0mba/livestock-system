@@ -10,4 +10,27 @@ class LivestockConfig(AppConfig):
 
     name = 'livestock'
  
-    
+    def ready(self):
+
+        import os
+
+        if os.environ.get('RENDER') == 'True':  # Check if running on Render
+
+            from django.core.management import call_command
+
+            try:
+
+                if not User.objects.filter(is_superuser=True).exists():
+
+                    print("Creating initial superuser...")
+
+                    call_command('createsuperuser', '--username=chomba', '--email=chombaerickdickson@gmail.com', '--password=Dickson1')
+
+                    print("Superuser created successfully.")
+
+            except (OperationalError, ProgrammingError):
+
+                # Database might not be ready yet during initial setup
+
+                pass
+ 
