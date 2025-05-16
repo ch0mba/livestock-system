@@ -36,4 +36,3 @@ class ProductivityRecord(models.Model):
         return f"{self.animal.rfid} - {self.record_date}"
 
 
-# Create your models here.
