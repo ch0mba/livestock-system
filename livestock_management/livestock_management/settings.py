@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'livestock_management.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('postgresql://livestock_backend_user:6I36Xv4AGDI5bY1xWu2UfSlgA5O6d6HY@dpg-d0jia9muk2gs73bu7sp0-a.oregon-postgres.render.com/livestock_backend'))
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 
 }
 
